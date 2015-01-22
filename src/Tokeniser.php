@@ -69,7 +69,7 @@ class Tokeniser
                     $digits .= $text[$i];
                     $i++;
                 }
-                yield new Token(Token::NUMBER, (float)$digits);
+                yield new Token(TokenType::NUMBER(), (float)$digits);
                 continue;
             }
 
@@ -87,7 +87,7 @@ class Tokeniser
                     $digits .= $text[$i];
                     $i++;
                 }
-                yield new Token(Token::NUMBER, (float)hexdec($digits));
+                yield new Token(TokenType::NUMBER(), (float)hexdec($digits));
                 continue;
             }
 
@@ -105,7 +105,7 @@ class Tokeniser
                     yield new Token($identifier);
                 // Plain old variable/function names
                 } else {
-                    yield new Token(Token::IDENTIFIER, $identifier);
+                    yield new Token(TokenType::IDENTIFIER(), $identifier);
                 }
                 continue;
             }
